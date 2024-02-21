@@ -6,4 +6,13 @@
     </style>
 
     <style name="Theme.MOBDEV_MCO" parent="Base.Theme.MOBDEV_MCO" />
+
+    <style name="Theme.MOBDEV_MCO.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MOBDEV_MCO.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MOBDEV_MCO.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
