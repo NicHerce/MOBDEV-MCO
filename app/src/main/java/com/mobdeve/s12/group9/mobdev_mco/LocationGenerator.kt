@@ -6,7 +6,7 @@ class LocationGenerator {
             val data = ArrayList<Location>()
 
             data.add(Location(
-                "Ayala Malls by the Bay",
+                "Ayala Malls Manila Bay",
                 R.drawable.ayalamalls
             ))
 
