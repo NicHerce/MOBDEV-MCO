@@ -10,6 +10,11 @@ class LocationGenerator {
                 R.drawable.ayalamalls
             ))
 
+            data.add(Location(
+                "Glorietta 4",
+                R.drawable.glorietta
+            ))
+
             return data
         }
     }
