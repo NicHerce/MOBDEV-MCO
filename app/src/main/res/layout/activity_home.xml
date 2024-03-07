@@ -136,6 +136,7 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/locationsRecyclerView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -161,7 +162,7 @@
                 android:id="@+id/ivLocationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_location_pin_24" />
+                app:srcCompat="@drawable/baseline_selected_location_pin_24" />
 
             <TextView
                 android:id="@+id/tvLocation"
@@ -198,6 +199,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/profileBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

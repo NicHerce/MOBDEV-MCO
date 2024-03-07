@@ -1,5 +1,6 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Initialize ViewBinding for the ProfileActivity
+        // Initialize ViewBinding for the HomeActivity
         val viewBinding: ActivityHomeBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
@@ -26,5 +27,10 @@ class HomeActivity : AppCompatActivity() {
         this.myAdapter = MyAdapter(locationList)
         this.recyclerView.adapter = myAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+
+        viewBinding.profileBtn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
