@@ -17,22 +17,29 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView         // RecyclerView reference
     private lateinit var myAdapter: MyAdapter               // Adapter reference
     private val snapHelper: SnapHelper = LinearSnapHelper() // SnapHelper reference
+    private lateinit var homeActivityBinding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Initialize ViewBinding for the HomeActivity
-        val viewBinding: ActivityHomeBinding = ActivityHomeBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(homeActivityBinding.root)
 
         // RecyclerView setup
-        this.recyclerView = viewBinding.locationsRecyclerView1
+        this.recyclerView = homeActivityBinding.locationsRecyclerView1
         this.myAdapter = MyAdapter(locationList)
         this.recyclerView.adapter = myAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         this.snapHelper.attachToRecyclerView(recyclerView)
 
-        viewBinding.profileBtn.setOnClickListener {
+        homeActivityBinding.profileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        homeActivityBinding.viewReservationsBtn.setOnClickListener {
+            val intent = Intent(this, ViewReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

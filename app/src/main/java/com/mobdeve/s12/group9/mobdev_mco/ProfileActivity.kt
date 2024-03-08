@@ -7,22 +7,29 @@ import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityMainBinding
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
+    private lateinit var profileActivityBinding: ActivityProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Initialize ViewBinding for the ProfileActivity
-        val viewBinding: ActivityProfileBinding = ActivityProfileBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
+        profileActivityBinding = ActivityProfileBinding.inflate(layoutInflater)
+        setContentView(profileActivityBinding.root)
 
         // Edit Account Button
-        viewBinding.btnEditAccount.setOnClickListener {
+        profileActivityBinding.btnEditAccount.setOnClickListener {
             val intent = Intent(this, EditProfileActivity::class.java)
             startActivity(intent)
         }
 
         // Locations Button
-        viewBinding.locationsBtn.setOnClickListener {
+        profileActivityBinding.locationsBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        profileActivityBinding.viewReservationsBtn.setOnClickListener {
+            val intent = Intent(this, ViewReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

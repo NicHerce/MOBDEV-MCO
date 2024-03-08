@@ -161,6 +161,7 @@
             app:layout_constraintVertical_bias="1.0">
 
             <LinearLayout
+                android:id="@+id/locationsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -185,6 +186,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/viewReservationsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
