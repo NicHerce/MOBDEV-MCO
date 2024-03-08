@@ -11,5 +11,6 @@ class EditProfileActivity : AppCompatActivity() {
 
         val viewBinding: ActivityEditProfileBinding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
+
     }
 }

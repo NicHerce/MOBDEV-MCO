@@ -24,6 +24,7 @@ class ProfileActivity : AppCompatActivity() {
         viewBinding.locationsBtn.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
