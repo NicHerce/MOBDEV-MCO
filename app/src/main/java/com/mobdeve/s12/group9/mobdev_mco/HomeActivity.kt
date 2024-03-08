@@ -34,6 +34,7 @@ class HomeActivity : AppCompatActivity() {
         viewBinding.profileBtn.setOnClickListener {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 }
