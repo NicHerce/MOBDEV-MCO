@@ -12,16 +12,19 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityHomeBinding
 
-class HomeActivity : AppCompatActivity() {
+class LocationActivity : AppCompatActivity() {
     companion object {
         const val TAG: String = "Main Activity"
     }
 
+    // Generate the data for Locations
     private val locationModelList: ArrayList<LocationModel> = LocationGenerator.loadData()
 
     private lateinit var recyclerView: RecyclerView         // RecyclerView reference
-    private lateinit var myAdapter: MyAdapter               // Adapter reference
+    private lateinit var locationAdapter: LocationAdapter   // Adapter reference
     private val snapHelper: SnapHelper = LinearSnapHelper() // SnapHelper reference
+
+    // HomeActivityBinding reference
     private lateinit var homeActivityBinding: ActivityHomeBinding
 
     private val reserveLocationSlotLauncher = registerForActivityResult(
@@ -30,16 +33,6 @@ class HomeActivity : AppCompatActivity() {
             val name: String = result.data?.getStringExtra(ReserveLocationActivity.nameKey)!!
             val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
             val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
-
-            Log.d(TAG, "" + name)
-            Log.d(TAG, "" + imageId)
-            Log.d(TAG, "" + position)
-//            val locationModel = LocationModel(name, imageId)
-//            Log.d(TAG, "" + locationModel)
-//            this.locationModelList.removeAt(position)
-//            this.locationModelList.add(position, locationModel)
-//            this.myAdapter.notifyItemRemoved(position)
-//            this.myAdapter.notifyDataSetChanged()
         }
     }
 
@@ -52,8 +45,8 @@ class HomeActivity : AppCompatActivity() {
 
         // RecyclerView setup
         this.recyclerView = homeActivityBinding.locationsRecyclerView1
-        this.myAdapter = MyAdapter(locationModelList, reserveLocationSlotLauncher)
-        this.recyclerView.adapter = myAdapter
+        this.locationAdapter = LocationAdapter(locationModelList, reserveLocationSlotLauncher)
+        this.recyclerView.adapter = locationAdapter
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         this.snapHelper.attachToRecyclerView(recyclerView)
 
@@ -64,7 +57,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         homeActivityBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ViewReservationsActivity::class.java)
+            val intent = Intent(this, ReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         viewBinding.btnLoginLogin.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
         }
 

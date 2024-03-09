@@ -6,17 +6,20 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/parkr_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/parkr_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MOBDEV_MCO"
         tools:targetApi="31">
         <activity
+            android:name=".ReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReserveLocationActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewReservationsActivity"
+            android:name=".ReservationsActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".HomePageActivity" -->
         <!-- android:exported="false" -->
@@ -32,7 +35,7 @@
             android:name=".ViewAvailableLocationsPageActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".LocationActivity"
             android:exported="false" />
         <activity
             android:name=".EditProfileActivity"

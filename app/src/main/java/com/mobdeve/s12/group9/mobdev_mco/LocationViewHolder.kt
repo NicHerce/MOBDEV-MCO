@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.mobdeve.s12.group9.mobdev_mco.databinding.LocationsLayoutBinding
 
-class MyViewHolder(private val viewBinding: LocationsLayoutBinding): RecyclerView.ViewHolder(viewBinding.root) {
+class LocationViewHolder(private val viewBinding: LocationsLayoutBinding): RecyclerView.ViewHolder(viewBinding.root) {
     // Performs the binding of the email data to the views in the ViewHolder
     companion object {
         const val TAG: String = "View Holder"

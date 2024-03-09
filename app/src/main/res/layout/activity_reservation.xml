@@ -4,78 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ReserveLocationActivity">
-
-    <!--    <CalendarView-->
-    <!--        android:id="@+id/calendar"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"></CalendarView>-->
+    tools:context=".ReservationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="410dp"
+        android:layout_height="243dp"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <ImageView
             android:id="@+id/locationImageTv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
             android:src="@drawable/ayalamalls" />
 
+
         <TextView
-            android:id="@+id/tvLocationName"
+            android:id="@+id/locationNameTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/location_name_rounded_corner"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="2dp"
-            android:text="Location Name"
-            android:textColor="@color/black"
-            android:textSize="24sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="TextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.917" />
+            app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
-
-        <CalendarView
-            android:id="@+id/locationCalendarReservationCv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
-
-        <Button
-            android:id="@+id/reserveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#E6AA14"
-            android:text="Reserve" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/navbar"
@@ -104,7 +57,7 @@
                 android:id="@+id/ivLocationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_selected_location_pin_24" />
+                app:srcCompat="@drawable/baseline_location_pin_24" />
 
             <TextView
                 android:id="@+id/tvLocation"
@@ -112,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Locations"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -154,7 +107,7 @@
                 android:id="@+id/ivProfileIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_account_circle_24" />
+                android:src="@drawable/baseline_selected_account_circle_24" />
 
             <TextView
                 android:id="@+id/tvProfile"
@@ -162,12 +115,10 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Profile"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
-
-    <!--        android:src="@tools:sample/avatars" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

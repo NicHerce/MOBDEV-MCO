@@ -5,11 +5,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ViewReservationsActivity">
+    tools:context=".LocationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/Header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
+
+        <ImageView
+            android:id="@+id/ivHomeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/shadow_yellow_background" />
+
+        <TextView
+            android:id="@+id/tvLocationsHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Your\nReservations"
+            android:textColor="@color/black"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <LinearLayout
+            android:id="@+id/btnFilterReservations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/container_background"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="3dp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivHomeHeader"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivHomeHeader"
+            app:layout_constraintVertical_bias="0.541">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Filter: on-going"
+                android:textColor="#B9B9B9" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:src="@drawable/baseline_keyboard_arrow_down_24" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reservationsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/navbar"
@@ -63,7 +140,7 @@
                     android:id="@+id/ivReservationsIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_menu_book_24" />
+                    android:src="@drawable/baseline_selected_menu_book_24" />
 
                 <TextView
                     android:id="@+id/tvReservations"
@@ -71,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Reservations"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -88,7 +165,7 @@
                     android:id="@+id/ivProfileIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/baseline_selected_account_circle_24" />
+                    android:src="@drawable/baseline_account_circle_24" />
 
                 <TextView
                     android:id="@+id/tvProfile"
@@ -96,10 +173,11 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Profile"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="16sp" />
             </LinearLayout>
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </LinearLayout>
