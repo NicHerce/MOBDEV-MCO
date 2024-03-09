@@ -1,6 +1,7 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
@@ -14,7 +15,8 @@ class LocationAdapter(
         private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>
     ) : Adapter<LocationViewHolder>() {
     companion object {
-        const val nameKey : String    = "NAME_KEY"
+        const val TAG: String = "My Adapter"
+        const val nameKey : String = "NAME_KEY"
         const val imageIdKey : String = "IMAGE_ID_KEY"
         const val positionKey: String = "POSITION_KEY"
     }
@@ -32,9 +34,12 @@ class LocationAdapter(
         LocationViewHolder(itemViewBinding).itemView.setOnClickListener{
             val intent = Intent(locationViewHolder.itemView.context, ReserveLocationActivity::class.java)
 
+            Log.d(TAG, "name =" + itemViewBinding.tvLocationName.text.toString())
             intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
-            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.ivLocationImg.id.toString())
-            intent.putExtra(ReserveLocationActivity.positionKey, locationViewHolder.adapterPosition)
+            Log.d(TAG, "id =" + itemViewBinding.ivLocationImg.id)
+//            2131230962
+            intent.putExtra(ReserveLocationActivity.imageIdKey, 2131165306)
+            intent.putExtra(ReserveLocationActivity.positionKey, myViewHolder.adapterPosition)
 
             this.reserveLocationSlotLauncher.launch(intent)
         }

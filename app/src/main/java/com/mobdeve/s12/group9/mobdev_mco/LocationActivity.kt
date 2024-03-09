@@ -33,9 +33,9 @@ class LocationActivity : AppCompatActivity() {
             val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
             val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
 
-//            Log.d(TAG, "" + name)
-//            Log.d(TAG, "" + imageId)
-//            Log.d(TAG, "" + position)
+            Log.d(TAG, "" + name)
+            Log.d(TAG, "" + imageId)
+            Log.d(TAG, "" + position)
 //            val locationModel = LocationModel(name, imageId)
 //            Log.d(TAG, "" + locationModel)
 //            this.locationModelList.removeAt(position)
