@@ -4,15 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ReserveLocationActivity">
 
-<!--    <CalendarView-->
-<!--        android:id="@+id/calendar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"></CalendarView>-->
+    <!--    <CalendarView-->
+    <!--        android:id="@+id/calendar"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"></CalendarView>-->
+
+    <ImageView
+        android:id="@+id/locationImageTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+<!--        android:src="@tools:sample/avatars" />-->
+
+    <TextView
+        android:id="@+id/locationNameTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView" />
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/locationCalendarReservationCv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1" />

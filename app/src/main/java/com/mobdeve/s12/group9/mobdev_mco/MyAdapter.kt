@@ -27,9 +27,9 @@ class MyAdapter(private val data: ArrayList<LocationModel>, private val reserveL
         MyViewHolder(itemViewBinding).itemView.setOnClickListener{
             val intent: Intent = Intent(myViewHolder.itemView.context, ReserveLocationActivity::class.java)
 
-//            intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.itemTitle.text.toString())
-//            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.itemBody.text.toString())
-//            intent.putExtra(ReserveLocationActivity.positionKey, myViewHolder.adapterPosition)
+            intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
+            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.ivLocationImg.id.toString())
+            intent.putExtra(ReserveLocationActivity.positionKey, myViewHolder.adapterPosition)
 
             this.reserveLocationSlotLauncher.launch(intent)
         }
