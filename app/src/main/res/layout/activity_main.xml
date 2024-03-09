@@ -135,7 +135,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
-                    android:background="@drawable/edittext_rounded_background"
                     android:backgroundTint="#D37D14"
                     android:text="Login"
                     app:layout_constraintEnd_toEndOf="parent"
