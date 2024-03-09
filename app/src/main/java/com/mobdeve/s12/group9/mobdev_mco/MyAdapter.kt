@@ -1,6 +1,7 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
@@ -11,6 +12,7 @@ import com.mobdeve.s12.group9.mobdev_mco.databinding.LocationsLayoutBinding
 // Adapter requires 3 functions: onCreateViewHolder, onBindViewHolder, and getItemCount
 class MyAdapter(private val data: ArrayList<LocationModel>, private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>) : Adapter<MyViewHolder>() {
     companion object {
+        const val TAG: String = "My Adapter"
         const val nameKey : String = "NAME_KEY"
         const val imageIdKey : String = "IMAGE_ID_KEY"
         const val positionKey: String = "POSITION_KEY"
@@ -28,7 +30,8 @@ class MyAdapter(private val data: ArrayList<LocationModel>, private val reserveL
             val intent: Intent = Intent(myViewHolder.itemView.context, ReserveLocationActivity::class.java)
 
             intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
-            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.ivLocationImg.id.toString())
+            Log.d(TAG, "id =" + itemViewBinding.ivLocationImg.id)
+            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.ivLocationImg.id)
             intent.putExtra(ReserveLocationActivity.positionKey, myViewHolder.adapterPosition)
 
             this.reserveLocationSlotLauncher.launch(intent)

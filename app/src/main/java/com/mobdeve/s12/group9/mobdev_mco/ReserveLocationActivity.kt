@@ -4,11 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReserveLocationBinding
 
 class ReserveLocationActivity : AppCompatActivity() {
     companion object {
+        const val TAG : String = "Reserve Location Activity"
         const val nameKey : String = "NAME_KEY"
         const val imageIdKey : String = "IMAGE_ID_KEY"
         const val positionKey: String = "POSITION_KEY"
@@ -24,9 +26,13 @@ class ReserveLocationActivity : AppCompatActivity() {
         this.reserveLocationBinding = ActivityReserveLocationBinding.inflate(layoutInflater)
         setContentView(reserveLocationBinding.root)
 
-//        reserveLocationBinding.titleEtv.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
-//        reserveLocationBinding.bodyEtv.setText(intent.getStringExtra(ReserveLocationActivity.imageIdKey))
-//        val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
+//        Log.d(TAG, "reserve location id =" + ReserveLocationActivity.imageIdKey)
+        reserveLocationBinding.locationNameTv.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
+//        Log.d(TAG, "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
+        reserveLocationBinding.locationImageTv.setImageResource(intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
+        val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
+
+//        reserveLocationBinding.
 //
 //        reserveLocationBinding.saveChangesBtn.setOnClickListener(View.OnClickListener {
 //            val intent: Intent = Intent()
