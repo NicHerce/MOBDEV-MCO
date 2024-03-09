@@ -37,9 +37,8 @@ class LocationAdapter(
             Log.d(TAG, "name =" + itemViewBinding.tvLocationName.text.toString())
             intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
             Log.d(TAG, "id =" + itemViewBinding.ivLocationImg.id)
-//            2131230962
             intent.putExtra(ReserveLocationActivity.imageIdKey, 2131165306)
-            intent.putExtra(ReserveLocationActivity.positionKey, myViewHolder.adapterPosition)
+            intent.putExtra(ReserveLocationActivity.positionKey, locationViewHolder.adapterPosition)
 
             this.reserveLocationSlotLauncher.launch(intent)
         }
