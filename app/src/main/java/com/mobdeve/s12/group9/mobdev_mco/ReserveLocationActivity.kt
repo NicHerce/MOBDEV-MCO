@@ -78,13 +78,13 @@ class ReserveLocationActivity : AppCompatActivity() {
         })
 
         reserveLocationBinding.locationsBtn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         reserveLocationBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ViewReservationsActivity::class.java)
+            val intent = Intent(this, ReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

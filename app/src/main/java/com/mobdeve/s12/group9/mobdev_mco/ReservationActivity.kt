@@ -32,13 +32,13 @@ class ReservationActivity : AppCompatActivity() {
 //        val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
 
         reservationBinding.locationsBtn.setOnClickListener {
-            val intent = Intent(this, HomeActivity::class.java)
+            val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
             finish()
         }
 
         reservationBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ViewReservationsActivity::class.java)
+            val intent = Intent(this, ReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }
