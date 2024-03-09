@@ -110,7 +110,8 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:paddingHorizontal="20dp">
+        android:paddingHorizontal="20dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/tvSuggestions1"
@@ -143,7 +144,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <LinearLayout
