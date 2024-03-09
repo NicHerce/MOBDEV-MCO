@@ -4,13 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ReserveLocationActivity">
-
-    <!--    <CalendarView-->
-    <!--        android:id="@+id/calendar"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"></CalendarView>-->
+    tools:context=".ReservationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
@@ -22,7 +16,7 @@
             android:id="@+id/locationImageTv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ayalamalls"/>
+            android:src="@drawable/ayalamalls" />
 
 
         <TextView
@@ -35,35 +29,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/constraintLayout">
-
-        <CalendarView
-            android:id="@+id/locationCalendarReservationCv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout">
-
-        <Button
-            android:id="@+id/reserveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="reserve" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/navbar"
@@ -155,7 +120,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <!--        android:src="@tools:sample/avatars" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
