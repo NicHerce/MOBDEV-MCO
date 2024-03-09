@@ -104,7 +104,7 @@
                 android:id="@+id/ivLocationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_location_pin_24" />
+                app:srcCompat="@drawable/baseline_selected_location_pin_24" />
 
             <TextView
                 android:id="@+id/tvLocation"
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Locations"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -154,7 +154,7 @@
                 android:id="@+id/ivProfileIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_selected_account_circle_24" />
+                android:src="@drawable/baseline_account_circle_24" />
 
             <TextView
                 android:id="@+id/tvProfile"
@@ -162,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Profile"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
 
