@@ -27,7 +27,7 @@ class ReserveLocationActivity : AppCompatActivity() {
         setContentView(reserveLocationBinding.root)
 
         Log.d(TAG, intent.getStringExtra(ReserveLocationActivity.nameKey).toString())
-        reserveLocationBinding.locationNameTv.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
+        reserveLocationBinding.tvLocationName.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
         Log.d(TAG, "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
 //        2131230962
         reserveLocationBinding.locationImageTv.setImageResource(intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
@@ -35,8 +35,8 @@ class ReserveLocationActivity : AppCompatActivity() {
 
         reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener{
             val intent: Intent = Intent()
-            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.locationNameTv.text.toString())
-            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.locationImageTv.id)
+            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.tvLocationName.text.toString())
+            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.tvLocationName.id)
             intent.putExtra(ReserveLocationActivity.nameKey, position)
 
             setResult(Activity.RESULT_OK, intent)

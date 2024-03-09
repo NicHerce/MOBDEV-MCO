@@ -19,9 +19,9 @@ class LocationActivity : AppCompatActivity() {
     // Generate the data for Locations
     private val locationModelList: ArrayList<LocationModel> = LocationGenerator.loadData()
 
-    private lateinit var recyclerView: RecyclerView               // RecyclerView reference
-    private lateinit var locationAdapter: LocationAdapter                     // Adapter reference
-    private val snapHelper: SnapHelper = LinearSnapHelper()       // SnapHelper reference
+    private lateinit var recyclerView: RecyclerView         // RecyclerView reference
+    private lateinit var locationAdapter: LocationAdapter   // Adapter reference
+    private val snapHelper: SnapHelper = LinearSnapHelper() // SnapHelper reference
 
     // HomeActivityBinding reference
     private lateinit var homeActivityBinding: ActivityHomeBinding
@@ -32,16 +32,6 @@ class LocationActivity : AppCompatActivity() {
             val name: String = result.data?.getStringExtra(ReserveLocationActivity.nameKey)!!
             val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
             val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
-
-            Log.d(TAG, "" + name)
-            Log.d(TAG, "" + imageId)
-            Log.d(TAG, "" + position)
-//            val locationModel = LocationModel(name, imageId)
-//            Log.d(TAG, "" + locationModel)
-//            this.locationModelList.removeAt(position)
-//            this.locationModelList.add(position, locationModel)
-//            this.myAdapter.notifyItemRemoved(position)
-//            this.myAdapter.notifyDataSetChanged()
         }
     }
 
