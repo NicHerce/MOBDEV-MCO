@@ -16,7 +16,7 @@
             android:name=".ReserveLocationActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewReservationsActivity"
+            android:name=".ReservationsActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".HomePageActivity" -->
         <!-- android:exported="false" -->
@@ -32,7 +32,7 @@
             android:name=".ViewAvailableLocationsPageActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".LocationActivity"
             android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
