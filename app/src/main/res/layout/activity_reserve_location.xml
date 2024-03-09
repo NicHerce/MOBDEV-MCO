@@ -70,7 +70,8 @@
             android:id="@+id/reserveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="reserve" />
+            android:backgroundTint="#E6AA14"
+            android:text="Reserve" />
     </LinearLayout>
 
     <LinearLayout

@@ -14,5 +14,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:backgroundTint="#E6AA14"
         android:text="To Home Activity" />
 </LinearLayout>
