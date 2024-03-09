@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MOBDEV_MCO"
         tools:targetApi="31">
         <activity
+            android:name=".ReservationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReserveLocationActivity"
             android:exported="false" />
         <activity

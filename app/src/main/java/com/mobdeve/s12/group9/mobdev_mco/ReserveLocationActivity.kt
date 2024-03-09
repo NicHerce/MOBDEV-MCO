@@ -2,17 +2,21 @@ package com.mobdeve.s12.group9.mobdev_mco
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CalendarView.OnDateChangeListener
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReserveLocationBinding
+
 
 class ReserveLocationActivity : AppCompatActivity() {
     companion object {
-        const val TAG : String = "Reserve Location Activity"
-        const val nameKey : String = "NAME_KEY"
-        const val imageIdKey : String = "IMAGE_ID_KEY"
+        const val TAG: String = "Reserve Location Activity"
+        const val nameKey: String = "NAME_KEY"
+        const val imageIdKey: String = "IMAGE_ID_KEY"
+        const val dateAndTimeKey: String = "DATE_AND_TIME_KEY"
         const val positionKey: String = "POSITION_KEY"
     }
 
@@ -28,30 +32,67 @@ class ReserveLocationActivity : AppCompatActivity() {
 
         Log.d(TAG, intent.getStringExtra(ReserveLocationActivity.nameKey).toString())
         reserveLocationBinding.tvLocationName.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
-        Log.d(TAG, "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
+        Log.d(
+            TAG,
+            "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
+        )
 //        2131230962
-        reserveLocationBinding.locationImageTv.setImageResource(intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0))
+        reserveLocationBinding.locationImageTv.setImageResource(
+            intent.getIntExtra(
+                ReserveLocationActivity.imageIdKey,
+                0
+            )
+        )
         val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
 
-        reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener{
+        reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener {
+//            reserveLocationBinding.locationCalendarReservationCv.setOnDateChangeListener(OnDateChangeListener { arg0, year, month, date ->
+//                val dateAndTime = Toast.makeText(
+//                    applicationContext,
+//                    "$date/$month/$year",
+//                    4000
+//                ).show()
+//            })
             val intent: Intent = Intent()
-            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.tvLocationName.text.toString())
-            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.tvLocationName.id)
-            intent.putExtra(ReserveLocationActivity.nameKey, position)
 
-            setResult(Activity.RESULT_OK, intent)
+            intent.putExtra(
+                nameKey,
+                reserveLocationBinding.tvLocationName.text.toString()
+            )
+            intent.putExtra(
+                imageIdKey,
+                reserveLocationBinding.locationImageTv.id
+            )
+            intent.putExtra(
+                dateAndTimeKey,
+                reserveLocationBinding.locationCalendarReservationCv.date
+            )
+            intent.putExtra(positionKey, position)
+
+            Log.d(
+                TAG,
+                "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
+            )
+            setResult(RESULT_OK, intent)
             finish()
         })
-//        reserveLocationBinding.
-//
-//        reserveLocationBinding.saveChangesBtn.setOnClickListener(View.OnClickListener {
-//            val intent: Intent = Intent()
-//            intent.putExtra(ReserveLocationActivity.nameKey, reserveLocationBinding.titleEtv.text.toString())
-//            intent.putExtra(ReserveLocationActivity.imageIdKey, reserveLocationBinding.bodyEtv.text.toString())
-//            intent.putExtra(ReserveLocationActivity.positionKey, position)
-//
-//            setResult(Activity.RESULT_OK, intent)
-//            finish()
-//        })
+
+        reserveLocationBinding.locationsBtn.setOnClickListener {
+            val intent = Intent(this, LocationActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        reserveLocationBinding.viewReservationsBtn.setOnClickListener {
+            val intent = Intent(this, ReservationsActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        reserveLocationBinding.profileBtn.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
+}
