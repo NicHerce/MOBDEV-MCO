@@ -1,6 +1,7 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator
 
 import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
+import com.mobdeve.s12.group9.mobdev_mco.R
 
 class LocationGenerator {
     companion object {
@@ -10,15 +11,15 @@ class LocationGenerator {
             data.add(
                 LocationModel(
                 "Ayala Malls Manila Bay",
-                R.drawable.ayalamalls
-            )
+                    R.drawable.ayalamalls
+                )
             )
 
             data.add(
                 LocationModel(
                 "Glorietta 4",
-                R.drawable.glorietta
-            )
+                    R.drawable.glorietta
+                )
             )
 
             return data
