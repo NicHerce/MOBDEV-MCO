@@ -1,4 +1,4 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.Adapter
 
 import android.content.Intent
 import android.util.Log
@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
+import com.mobdeve.s12.group9.mobdev_mco.ViewHolder.LocationViewHolder
+import com.mobdeve.s12.group9.mobdev_mco.ReserveLocationActivity
 import com.mobdeve.s12.group9.mobdev_mco.databinding.LocationsLayoutBinding
 
 // Adapter is an Abstract class
 // Adapter requires 3 functions: onCreateViewHolder, onBindViewHolder, and getItemCount
 class LocationAdapter(
-        private val data: ArrayList<LocationModel>,
-        private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>
+    private val data: ArrayList<LocationModel>,
+    private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>
     ) : Adapter<LocationViewHolder>() {
     companion object {
         const val TAG: String = "My Adapter"

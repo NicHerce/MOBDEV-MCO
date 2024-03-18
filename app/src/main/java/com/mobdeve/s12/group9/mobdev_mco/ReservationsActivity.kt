@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import com.mobdeve.s12.group9.mobdev_mco.Adapter.ReservationAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
+import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.ReservationGenerator
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityViewReservationsBinding
 
 class ReservationsActivity : AppCompatActivity() {

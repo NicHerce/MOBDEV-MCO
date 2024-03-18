@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
+import com.mobdeve.s12.group9.mobdev_mco.Adapter.LocationAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityHomeBinding
 
 class LocationActivity : AppCompatActivity() {

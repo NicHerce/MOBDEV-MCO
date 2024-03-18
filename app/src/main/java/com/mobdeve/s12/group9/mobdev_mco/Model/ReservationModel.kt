@@ -1,4 +1,4 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.Model
 
 class ReservationModel (
     val status:     String,

@@ -1,7 +1,8 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.ViewHolder
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
 import com.mobdeve.s12.group9.mobdev_mco.databinding.LocationsLayoutBinding
 
 class LocationViewHolder(private val viewBinding: LocationsLayoutBinding): RecyclerView.ViewHolder(viewBinding.root) {

@@ -1,8 +1,10 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
+import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
+import com.mobdeve.s12.group9.mobdev_mco.ViewHolder.ReservationViewHolder
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ReservationsLayoutBinding
 
 // Adapter is an Abstract class

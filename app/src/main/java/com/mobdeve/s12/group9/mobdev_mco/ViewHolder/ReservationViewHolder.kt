@@ -1,6 +1,7 @@
-package com.mobdeve.s12.group9.mobdev_mco
+package com.mobdeve.s12.group9.mobdev_mco.ViewHolder
 
 import androidx.recyclerview.widget.RecyclerView
+import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ReservationsLayoutBinding // LocationsLayoutBinding
 
 class ReservationViewHolder(private val viewBinding: ReservationsLayoutBinding): RecyclerView.ViewHolder(viewBinding.root) {
