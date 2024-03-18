@@ -31,7 +31,7 @@ class ReserveLocationActivity : AppCompatActivity() {
         setContentView(reserveLocationBinding.root)
 
         Log.d(TAG, intent.getStringExtra(ReserveLocationActivity.nameKey).toString())
-        reserveLocationBinding.locationNameTv.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
+        reserveLocationBinding.tvLocationName.setText(intent.getStringExtra(ReserveLocationActivity.nameKey))
         Log.d(
             TAG,
             "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
@@ -56,24 +56,24 @@ class ReserveLocationActivity : AppCompatActivity() {
             val intent: Intent = Intent()
 
             intent.putExtra(
-                ReserveLocationActivity.nameKey,
-                reserveLocationBinding.locationNameTv.text.toString()
+                nameKey,
+                reserveLocationBinding.tvLocationName.text.toString()
             )
             intent.putExtra(
-                ReserveLocationActivity.imageIdKey,
+                imageIdKey,
                 reserveLocationBinding.locationImageTv.id
             )
             intent.putExtra(
-                ReserveLocationActivity.dateAndTimeKey,
+                dateAndTimeKey,
                 reserveLocationBinding.locationCalendarReservationCv.date
             )
-            intent.putExtra(ReserveLocationActivity.positionKey, position)
+            intent.putExtra(positionKey, position)
 
             Log.d(
                 TAG,
                 "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
             )
-            setResult(Activity.RESULT_OK, intent)
+            setResult(RESULT_OK, intent)
             finish()
         })
 

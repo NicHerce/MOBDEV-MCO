@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         val viewBinding: ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
 
-        viewBinding.btnHomeActivity.setOnClickListener {
+        viewBinding.btnLoginLogin.setOnClickListener {
             val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
         }

@@ -14,26 +14,37 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:layout_width="410dp"
-        android:layout_height="243dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
 
         <ImageView
             android:id="@+id/locationImageTv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/ayalamalls"/>
-
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/ayalamalls" />
 
         <TextView
-            android:id="@+id/locationNameTv"
+            android:id="@+id/tvLocationName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="20dp"
-            android:text="TextView"
+            android:background="@drawable/location_name_rounded_corner"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="2dp"
+            android:text="Location Name"
+            android:textColor="@color/black"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.917" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -62,7 +73,8 @@
             android:id="@+id/reserveBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="reserve" />
+            android:backgroundTint="#E6AA14"
+            android:text="Reserve" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +104,7 @@
                 android:id="@+id/ivLocationIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/baseline_location_pin_24" />
+                app:srcCompat="@drawable/baseline_selected_location_pin_24" />
 
             <TextView
                 android:id="@+id/tvLocation"
@@ -100,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Locations"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -142,7 +154,7 @@
                 android:id="@+id/ivProfileIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/baseline_selected_account_circle_24" />
+                android:src="@drawable/baseline_account_circle_24" />
 
             <TextView
                 android:id="@+id/tvProfile"
@@ -150,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Profile"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </LinearLayout>
 
