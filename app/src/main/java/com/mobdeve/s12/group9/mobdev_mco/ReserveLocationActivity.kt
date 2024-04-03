@@ -7,6 +7,8 @@ import android.util.Log
 import android.view.View
 import android.widget.CalendarView.OnDateChangeListener
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReserveLocationBinding
 
@@ -16,14 +18,28 @@ class ReserveLocationActivity : AppCompatActivity() {
         const val TAG: String = "Reserve Location Activity"
         const val nameKey: String = "NAME_KEY"
         const val imageIdKey: String = "IMAGE_ID_KEY"
-        const val dateAndTimeKey: String = "DATE_AND_TIME_KEY"
+        const val dateKey: String = "DATE_AND_TIME_KEY"
         const val positionKey: String = "POSITION_KEY"
+        const val timeKey: String = "TIME_KEY"
+        const val isOvernightKey: String = "IS_OVERNIGHT_KEY"
     }
 
     private lateinit var nameString: String
     private lateinit var bodyString: String
+    private lateinit var time: String
+    private var isOvernight = false;
 
     private lateinit var reserveLocationBinding: ActivityReserveLocationBinding   // Holds the views of the ActivityViewNoteBinding
+
+    private val reservationSlotLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        if (result.resultCode == RESULT_OK) {
+            time = result.data?.getStringExtra(ReservationActivity.timeKey)!!
+            isOvernight = result.data?.getBooleanExtra(ReservationActivity.isOvernightKey, false)!!
+            intent.putExtra(timeKey, time)
+            intent.putExtra(isOvernightKey, isOvernight)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +53,12 @@ class ReserveLocationActivity : AppCompatActivity() {
             "reserve location id 2 =" + intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
         )
 //        2131230962
-        reserveLocationBinding.locationImageTv.setImageResource(
-            intent.getIntExtra(
-                ReserveLocationActivity.imageIdKey,
-                0
-            )
-        )
+//        reserveLocationBinding.locationImageTv.setImageResource(
+//            intent.getIntExtra(
+//                ReserveLocationActivity.imageIdKey,
+//                0
+//            )
+//        )
         val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
 
         reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener {
@@ -53,7 +69,7 @@ class ReserveLocationActivity : AppCompatActivity() {
 //                    4000
 //                ).show()
 //            })
-            val intent: Intent = Intent()
+            val intent: Intent = Intent(this@ReserveLocationActivity, ReservationActivity::class.java)
 
             intent.putExtra(
                 nameKey,
@@ -64,17 +80,20 @@ class ReserveLocationActivity : AppCompatActivity() {
                 reserveLocationBinding.locationImageTv.id
             )
             intent.putExtra(
-                dateAndTimeKey,
+                dateKey,
                 reserveLocationBinding.locationCalendarReservationCv.date
             )
             intent.putExtra(positionKey, position)
+
+            this.reservationSlotLauncher.launch(intent)
+
 
             Log.d(
                 TAG,
                 "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
             )
-            setResult(RESULT_OK, intent)
-            finish()
+//            setResult(RESULT_OK, intent)
+//            finish()
         })
 
         reserveLocationBinding.locationsBtn.setOnClickListener {

@@ -1,35 +1,87 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Spinner
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.mobdeve.s12.group9.mobdev_mco.Adapter.SpinnerAdapter
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReservationBinding
-import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReserveLocationBinding
 
 class ReservationActivity : AppCompatActivity() {
     companion object {
-        const val TAG : String = "Reserve Location Activity"
-        const val nameKey : String = "NAME_KEY"
-        const val imageIdKey : String = "IMAGE_ID_KEY"
-        const val positionKey: String = "POSITION_KEY"
+        const val timeKey: String = "TIME_KEY"
+        const val isOvernightKey: String = "IS_OVERNIGHT_KEY"
     }
+
     private lateinit var reservationBinding: ActivityReservationBinding
+    private val startTime: Spinner? = null
+    private val endTime: Spinner? = null
+    private var spinnerAdapter: SpinnerAdapter? = null
+    private var tvSpinEntry: TextView? = null
+//    private val paymentPageSlotLauncher = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+//        if (result.resultCode == RESULT_OK) {
+//            val time: Int = result.data?.getIntExtra(PaymentPageActivity.timeKey, 0)!!
+//            val imageId: Int = result.data?.getIntExtra(PaymentPageActivity.imageIdKey, 0)!!
+//            val position: Int = result.data?.getIntExtra(PaymentPageActivity.positionKey, 0)!!
+//            val isOverNight: Boolean = result.data?.getBooleanExtra(PaymentPageActivity.)
+//
+//        }
+//    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         reservationBinding = ActivityReservationBinding.inflate(layoutInflater)
         setContentView(reservationBinding.root)
 
-        val name: String = intent.getStringExtra(ReserveLocationActivity.nameKey)!!
-        val imageId: Int = intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
-        val dateAndTime: Long = intent.getLongExtra(ReserveLocationActivity.dateAndTimeKey, 0)
-        val position: Int = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
-        Log.d(TAG, "reservation activity date and time = " + dateAndTime.toString())
+        val arrayStructures = resources.getStringArray(R.array.array_time)
+        this.spinnerAdapter = SpinnerAdapter(this, R.layout.spinner_item, arrayStructures)
+        reservationBinding.startTime.adapter = this.spinnerAdapter
+        reservationBinding.endTime.adapter = this.spinnerAdapter
+//        this.endTime?.adapter = this.spinnerAdapter
+//
+        reservationBinding.startTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View,
+                position: Int,
+                id: Long
+            ) {
+                setStartTime();
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {}
+        }
+
+//        reservationBinding.endTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parentView: AdapterView<*>?,
+//                selectedItemView: View,
+//                position: Int,
+//                id: Long
+//            ) {
+//                setEndTime();
+//            }
+//
+//            override fun onNothingSelected(parentView: AdapterView<*>?) {}
+//        }
+
+//        val name: String = intent.getStringExtra(ReserveLocationActivity.nameKey)!!
+//        val imageId: Int = intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
+//        val time: String = intent.getLongExtra(ReserveLocationActivity.timeKey, 0)
+//        val position: Int = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
+//        Log.d(TAG, "reservation activity date and time = " + dateAndTime.toString())
 //        intent.getLongExtra(ReserveLocationActivity.dateAndTimeKey, 0)
 //        intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
 //        val name: String = result.data?.getStringExtra(ReserveLocationActivity.nameKey)!!
 //        val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
 //        val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
+
+//        intent.putExtra(timeKey, this.tvSpinEntry.text.toString())
 
         reservationBinding.locationsBtn.setOnClickListener {
             val intent = Intent(this, LocationActivity::class.java)
@@ -48,5 +100,12 @@ class ReservationActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    private fun setStartTime() {
+        this.tvSpinEntry = reservationBinding.startTime.selectedView?.findViewById<TextView>(R.id.tv_spinner_entry)
+    }
+    private fun setEndTime() {
+        this.tvSpinEntry = reservationBinding.endTime.selectedView?.findViewById<TextView>(R.id.tv_spinner_entry)
     }
 }

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
-import com.mobdeve.s12.group9.mobdev_mco.Adapter.ReservationAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Adapter.ReservationsAdapter
 import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.ReservationGenerator
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityViewReservationsBinding
@@ -18,7 +18,7 @@ class ReservationsActivity : AppCompatActivity() {
     private val reservationModelList: ArrayList<ReservationModel> = ReservationGenerator.loadData()
 
     private lateinit var recyclerView: RecyclerView             // RecyclerView reference
-    private lateinit var reservationAdapter: ReservationAdapter // Adapter reference
+    private lateinit var reservationsAdapter: ReservationsAdapter // Adapter reference
     private val snapHelper: SnapHelper = LinearSnapHelper()     // SnapHelper reference
 
     // Activity reference
@@ -32,8 +32,8 @@ class ReservationsActivity : AppCompatActivity() {
 
         // RecyclerView setup
         this.recyclerView = viewReservationsActivityBinding.reservationsRecyclerView
-        this.reservationAdapter = ReservationAdapter(reservationModelList)
-        this.recyclerView.adapter = reservationAdapter
+        this.reservationsAdapter = ReservationsAdapter(reservationModelList)
+        this.recyclerView.adapter = reservationsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         this.snapHelper.attachToRecyclerView(recyclerView)
 

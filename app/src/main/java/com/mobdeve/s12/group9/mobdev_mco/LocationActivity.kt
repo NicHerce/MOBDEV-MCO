@@ -11,12 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.LocationAdapter
 import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
+import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.LocationGenerator
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityHomeBinding
 
 class LocationActivity : AppCompatActivity() {
     companion object {
         const val TAG: String = "Main Activity"
+//        private val details = ArrayList<ReservationModel>()
     }
 
     // Generate the data for Locations
@@ -29,6 +31,12 @@ class LocationActivity : AppCompatActivity() {
     // HomeActivityBinding reference
     private lateinit var homeActivityBinding: ActivityHomeBinding
 
+    //Reservation values
+    private var location = "";
+    private var date = "";
+    private var time = ""
+
+    //Go to location adapter, pass result back
     private val reserveLocationSlotLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         if (result.resultCode == RESULT_OK) {
