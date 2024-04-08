@@ -20,24 +20,37 @@ class ReserveLocationActivity : AppCompatActivity() {
         const val imageIdKey: String = "IMAGE_ID_KEY"
         const val dateKey: String = "DATE_AND_TIME_KEY"
         const val positionKey: String = "POSITION_KEY"
-        const val timeKey: String = "TIME_KEY"
+        const val startTimeKey: String = "START_TIME_KEY"
+        const val endTimeKey: String = "END_TIME_KEY"
         const val isOvernightKey: String = "IS_OVERNIGHT_KEY"
     }
 
     private lateinit var nameString: String
     private lateinit var bodyString: String
-    private lateinit var time: String
+    private lateinit var startTime: String
+    private lateinit var endTime: String
     private var isOvernight = false;
 
     private lateinit var reserveLocationBinding: ActivityReserveLocationBinding   // Holds the views of the ActivityViewNoteBinding
 
     private val reservationSlotLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        // Check to see if the result returned is appropriate (i.e. OK)
+        Log.d(TAG, "reservation slot launcher")
         if (result.resultCode == RESULT_OK) {
-            time = result.data?.getStringExtra(ReservationActivity.timeKey)!!
+            startTime = result.data?.getStringExtra(ReservationActivity.startTimeKey)!!
+            endTime = result.data?.getStringExtra(ReservationActivity.endTimeKey)!!
             isOvernight = result.data?.getBooleanExtra(ReservationActivity.isOvernightKey, false)!!
-            intent.putExtra(timeKey, time)
+            Log.d(TAG, "start =" + startTime)
+            Log.d(TAG, "end =" + endTime)
+            intent.putExtra(startTimeKey, startTime)
+            intent.putExtra(endTimeKey, endTime)
             intent.putExtra(isOvernightKey, isOvernight)
+
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        } else {
+            Log.d(TAG, "help me")
         }
     }
 
@@ -60,7 +73,6 @@ class ReserveLocationActivity : AppCompatActivity() {
 //            )
 //        )
         val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
-
         reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener {
 //            reserveLocationBinding.locationCalendarReservationCv.setOnDateChangeListener(OnDateChangeListener { arg0, year, month, date ->
 //                val dateAndTime = Toast.makeText(
@@ -69,6 +81,7 @@ class ReserveLocationActivity : AppCompatActivity() {
 //                    4000
 //                ).show()
 //            })
+//            val intent: Intent = Intent()
             val intent: Intent = Intent(this@ReserveLocationActivity, ReservationActivity::class.java)
 
             intent.putExtra(
@@ -87,13 +100,10 @@ class ReserveLocationActivity : AppCompatActivity() {
 
             this.reservationSlotLauncher.launch(intent)
 
-
             Log.d(
                 TAG,
                 "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
             )
-//            setResult(RESULT_OK, intent)
-//            finish()
         })
 
         reserveLocationBinding.locationsBtn.setOnClickListener {

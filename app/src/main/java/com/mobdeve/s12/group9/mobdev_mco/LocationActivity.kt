@@ -3,6 +3,7 @@ package com.mobdeve.s12.group9.mobdev_mco
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,10 +40,16 @@ class LocationActivity : AppCompatActivity() {
     //Go to location adapter, pass result back
     private val reserveLocationSlotLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+        Log.d(TAG, "reserve location launcher")
         if (result.resultCode == RESULT_OK) {
             val name: String = result.data?.getStringExtra(ReserveLocationActivity.nameKey)!!
             val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
+            val date: Int = result.data?.getIntExtra(ReserveLocationActivity.dateKey, 0)!!
             val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
+            val startTime: String = result.data?.getStringExtra(ReserveLocationActivity.startTimeKey)!!
+            val endTime: String = result.data?.getStringExtra(ReserveLocationActivity.endTimeKey)!!
+            val isOvernight: Boolean = result.data?.getBooleanExtra(ReserveLocationActivity.isOvernightKey, false)!!
+            Log.d(TAG, "reserve location slot launcher =" + name + imageId + date + position + startTime + endTime + isOvernight)
         }
     }
 

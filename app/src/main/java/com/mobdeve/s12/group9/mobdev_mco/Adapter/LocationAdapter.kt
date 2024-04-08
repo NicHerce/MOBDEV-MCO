@@ -34,8 +34,8 @@ class LocationAdapter(
 
         val locationViewHolder = LocationViewHolder(itemViewBinding)
 
-        LocationViewHolder(itemViewBinding).itemView.setOnClickListener{
-            val intent = Intent(locationViewHolder.itemView.context, ReserveLocationActivity::class.java)
+        locationViewHolder.itemView.setOnClickListener{
+            val intent: Intent = Intent(locationViewHolder.itemView.context, ReserveLocationActivity::class.java)
 
             Log.d(TAG, "name =" + itemViewBinding.tvLocationName.text.toString())
             intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
@@ -45,7 +45,6 @@ class LocationAdapter(
 
             this.reserveLocationSlotLauncher.launch(intent)
         }
-
         return locationViewHolder
     }
 

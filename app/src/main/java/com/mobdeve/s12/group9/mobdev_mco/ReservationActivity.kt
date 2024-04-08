@@ -1,8 +1,10 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Spinner
@@ -13,7 +15,8 @@ import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReservationBinding
 
 class ReservationActivity : AppCompatActivity() {
     companion object {
-        const val timeKey: String = "TIME_KEY"
+        const val startTimeKey: String = "START_TIME_KEY"
+        const val endTimeKey: String = "END_TIME_KEY"
         const val isOvernightKey: String = "IS_OVERNIGHT_KEY"
     }
 
@@ -22,6 +25,7 @@ class ReservationActivity : AppCompatActivity() {
     private val endTime: Spinner? = null
     private var spinnerAdapter: SpinnerAdapter? = null
     private var tvSpinEntry: TextView? = null
+
 //    private val paymentPageSlotLauncher = registerForActivityResult(
 //        ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
 //        if (result.resultCode == RESULT_OK) {
@@ -44,6 +48,7 @@ class ReservationActivity : AppCompatActivity() {
         reservationBinding.endTime.adapter = this.spinnerAdapter
 //        this.endTime?.adapter = this.spinnerAdapter
 //
+        val intent: Intent = Intent()
         reservationBinding.startTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parentView: AdapterView<*>?,
@@ -52,23 +57,32 @@ class ReservationActivity : AppCompatActivity() {
                 id: Long
             ) {
                 setStartTime();
+                Log.d("Reservation Activity", "test time" + tvSpinEntry?.text.toString())
+                intent.putExtra(ReservationActivity.startTimeKey, tvSpinEntry?.text.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
         }
 
-//        reservationBinding.endTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parentView: AdapterView<*>?,
-//                selectedItemView: View,
-//                position: Int,
-//                id: Long
-//            ) {
-//                setEndTime();
-//            }
-//
-//            override fun onNothingSelected(parentView: AdapterView<*>?) {}
-//        }
+        reservationBinding.endTime.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View,
+                position: Int,
+                id: Long
+            ) {
+                setEndTime();
+                intent.putExtra(ReservationActivity.endTimeKey, tvSpinEntry?.text.toString())
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {}
+        }
+
+        reservationBinding.reservationBtn.setOnClickListener(View.OnClickListener {
+            Log.d("Reservation Activity", "intent = " + intent.getStringExtra(startTimeKey))
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        })
 
 //        val name: String = intent.getStringExtra(ReserveLocationActivity.nameKey)!!
 //        val imageId: Int = intent.getIntExtra(ReserveLocationActivity.imageIdKey, 0)
