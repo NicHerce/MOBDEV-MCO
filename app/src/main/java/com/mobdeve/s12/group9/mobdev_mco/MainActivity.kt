@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        viewBinding.txvLoginRegisterbutton.setOnClickListener{
+            val intent = Intent( this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
         Log.d(TAG, "onCreate finished execution")
     }
 }
