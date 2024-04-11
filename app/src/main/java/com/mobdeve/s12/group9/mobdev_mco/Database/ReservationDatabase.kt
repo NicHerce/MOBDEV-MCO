@@ -16,7 +16,7 @@ class ReservationDatabase(context: Context) {
     }
 
     // Add a reservation and return id
-    fun addReservation(reservation: ReservationModel) : Int {
+    fun addReservation(reservation: ReservationModel) {
         val db = reservationDatabaseHandler.writableDatabase
 
         val contentValues = ContentValues()
@@ -26,9 +26,8 @@ class ReservationDatabase(context: Context) {
 
         val id = db.insert(ReservationDatabaseHandler.RESERVATION_TABLE, null, contentValues)
 
+        contentValues.put(ReservationDatabaseHandler.RESERVATION_ID, id)
         db.close()
-
-        return id.toInt()
     }
 
     //Update a reservation

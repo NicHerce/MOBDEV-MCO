@@ -10,8 +10,6 @@ import android.os.Bundle
 import android.service.autofill.UserData
 import android.util.Log
 import android.widget.Toast
-import com.mobdeve.s12.group9.mobdev_mco.Database.DatabaseHandler
-import com.mobdeve.s12.group9.mobdev_mco.Database.UserDatabase
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

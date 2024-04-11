@@ -27,6 +27,7 @@ class ReserveLocationActivity : AppCompatActivity() {
     private lateinit var bodyString: String
     private lateinit var startTime: String
     private lateinit var endTime: String
+    private lateinit var date: String
     private var isOvernight = false;
 
     private lateinit var reserveLocationBinding: ActivityReserveLocationBinding   // Holds the views of the ActivityViewNoteBinding
@@ -45,6 +46,8 @@ class ReserveLocationActivity : AppCompatActivity() {
             intent.putExtra(startTimeKey, startTime)
             intent.putExtra(endTimeKey, endTime)
             intent.putExtra(isOvernightKey, isOvernight)
+            Log.d(TAG, "date checking again" + date)
+            intent.putExtra(dateKey, date)
 
             setResult(Activity.RESULT_OK, intent)
             finish()
@@ -91,18 +94,16 @@ class ReserveLocationActivity : AppCompatActivity() {
                 imageIdKey,
                 reserveLocationBinding.locationImageTv.id
             )
-            intent.putExtra(
-                dateKey,
-                reserveLocationBinding.locationCalendarReservationCv.date
-            )
+            date = reserveLocationBinding.locationCalendarReservationCv.date.toString()
+            Log.d(TAG, "date check" + intent.getStringExtra(ReserveLocationActivity.dateKey))
             intent.putExtra(positionKey, position)
 
             this.reservationSlotLauncher.launch(intent)
 
-            Log.d(
-                TAG,
-                "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
-            )
+//            Log.d(
+//                TAG,
+//                "Reserve Location =" + reserveLocationBinding.locationCalendarReservationCv.date
+//            )
         })
 
         reserveLocationBinding.locationsBtn.setOnClickListener {

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.LocationAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Database.ReservationDatabase
 import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
 import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.LocationGenerator
@@ -34,7 +35,7 @@ class LocationActivity : AppCompatActivity() {
 
     //Reservation values
     private var location = ""
-    private var date = ""
+//    private var date = ""
     private var time = ""
 
     //Go to location adapter, pass result back
@@ -44,7 +45,7 @@ class LocationActivity : AppCompatActivity() {
         if (result.resultCode == RESULT_OK) {
             val name: String = result.data?.getStringExtra(ReserveLocationActivity.nameKey)!!
             val imageId: Int = result.data?.getIntExtra(ReserveLocationActivity.imageIdKey, 0)!!
-            val date: Int = result.data?.getIntExtra(ReserveLocationActivity.dateKey, 0)!!
+            val date: String = result.data?.getStringExtra(ReserveLocationActivity.dateKey)!!
             val position: Int = result.data?.getIntExtra(ReserveLocationActivity.positionKey, 0)!!
             val startTime: String = result.data?.getStringExtra(ReserveLocationActivity.startTimeKey)!!
             val endTime: String = result.data?.getStringExtra(ReserveLocationActivity.endTimeKey)!!
@@ -132,14 +133,18 @@ class LocationActivity : AppCompatActivity() {
                     }
                 }
             }
-//            if(startTimeValue[0] 4)
-//                4 to 959am
-//                        first 3 hours 55
-//            succeeding 30
-//
-//            10 to 359am
-//                    first 3 hours 55
-//            succeeding 10
+            val reservationDatabase = ReservationDatabase(applicationContext)
+
+            reservationDatabase.addReservation(
+                ReservationModel(
+                    name,
+                    date,
+                    "$startTime-$endTime"
+                )
+            )
+
+            val database = reservationDatabase.getReservation()
+            Log.d(TAG, "database = " + database)
 //
 //            weekends and holidays 60pesos whole day
 
