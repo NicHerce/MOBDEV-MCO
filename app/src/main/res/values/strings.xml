@@ -3,6 +3,7 @@
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="register_text"><u>Register</u></string>
+    <string name="login_text"><u>Login</u></string>
     <string name="register_license_plate">REGISTER NEW LICENSE PLATE</string>
     <string name="edit_account">EDIT ACCOUNT</string>
     <string name="textview">TextView</string>

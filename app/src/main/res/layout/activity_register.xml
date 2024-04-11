@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--TODO: Hijacked Main first, replace this after-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="325dp"
+                android:background="#F9BE28">
+
+                <ImageView
+                    android:id="@+id/imv_register_logo"
+                    android:layout_width="322dp"
+                    android:layout_height="129dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/parkr_logo"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:id="@+id/txv_register_slogan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Hassle free parking."
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imv_register_logo"
+                    app:layout_constraintVertical_bias="0.0" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="806dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/txv_register_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Login"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/edt_register_email"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Email"
+                    android:inputType="text"
+                    android:maxWidth="370dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_username"
+                    tools:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/edt_register_password"
+                    android:layout_width="300dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:maxWidth="100dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.504"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_emailconfirm" />
+
+                <TextView
+                    android:id="@+id/txv_register_registerheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="Already have an Account?"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_register_register" />
+
+                <TextView
+                    android:id="@+id/txv_register_loginbutton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/login_text"
+                    android:textColor="#CC9812"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txv_register_registerheader" />
+
+                <Button
+                    android:id="@+id/btn_register_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:backgroundTint="#D37D14"
+                    android:text="Register"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_licenseid2" />
+
+                <EditText
+                    android:id="@+id/edt_register_emailconfirm"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Confirm Email"
+                    android:inputType="text"
+                    android:maxWidth="370dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_email"
+                    tools:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/edt_register_passwordconfirm"
+                    android:layout_width="300dp"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Confrim Password"
+                    android:inputType="textPassword"
+                    android:maxWidth="100dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_password" />
+
+                <EditText
+                    android:id="@+id/edt_register_username"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:maxWidth="370dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txv_register_header"
+                    tools:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/edt_register_licenseid"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Drivers License ID"
+                    android:inputType="text"
+                    android:maxWidth="370dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_passwordconfirm"
+                    tools:inputType="textEmailAddress" />
+
+                <EditText
+                    android:id="@+id/edt_register_licenseid2"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/edittext_rounded_background"
+                    android:backgroundTint="#E3E3E3"
+                    android:ems="10"
+                    android:hint="Plate No"
+                    android:inputType="text"
+                    android:maxWidth="370dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="10dp"
+                    android:textColor="#B9B9B9"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edt_register_licenseid"
+                    tools:inputType="textEmailAddress" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
