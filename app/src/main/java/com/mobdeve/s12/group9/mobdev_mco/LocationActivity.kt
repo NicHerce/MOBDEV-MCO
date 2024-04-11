@@ -49,6 +49,105 @@ class LocationActivity : AppCompatActivity() {
             val startTime: String = result.data?.getStringExtra(ReserveLocationActivity.startTimeKey)!!
             val endTime: String = result.data?.getStringExtra(ReserveLocationActivity.endTimeKey)!!
             val isOvernight: Boolean = result.data?.getBooleanExtra(ReserveLocationActivity.isOvernightKey, false)!!
+            val startTimeValue = startTime.split(":").toMutableList()
+            val startTimeTrueValue = startTime.split(" ")
+            val endTimeValue = endTime.split(":").toMutableList()
+            val endTimeTrueValue = endTime.split(" ")
+            var reservationPayment = 0
+            if(startTimeTrueValue[1] == "PM") {
+                startTimeValue[0] = (startTimeValue[0].toInt() + 12).toString()
+            }
+            if(endTimeTrueValue[1] == "PM") {
+                endTimeValue[0] = (endTimeValue[0].toInt() + 12).toString()
+            }
+
+            var duration = endTimeValue[0].toInt() - startTimeValue[0].toInt();
+
+            Log.d(TAG, "duration" + duration)
+
+            if(startTimeValue[0].toInt() in 1..3) {
+                if(duration >= 3) {
+                    for(i in 1..3) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 10
+                    }
+                } else {
+                    for(i in 1 .. duration) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 10
+                    }
+                }
+            }
+
+            if(startTimeValue[0].toInt() in 4..9 ) {
+                duration -= 3;
+                startTimeValue[0] = (startTimeValue[0].toInt() + 3).toString()
+                reservationPayment += 55
+                Log.d(TAG, "startTimeValue update = " + startTimeValue[0].toInt());
+                Log.d(TAG, "duration" + duration)
+                Log.d(TAG, "Looped1")
+
+                if(duration >= 3) {
+                    for(i in 1..3) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 30
+                    }
+                } else {
+                    for(i in 1 .. duration) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 30
+                    }
+                }
+            }
+
+            if(startTimeValue[0].toInt() in 10..24) {
+                duration -= 3;
+                startTimeValue[0] = (startTimeValue[0].toInt() + 3).toString()
+                reservationPayment += 55
+                Log.d(TAG, "startTimeValue update = " + startTimeValue[0].toInt());
+                Log.d(TAG, "duration" + duration)
+                Log.d(TAG, "Looped1")
+
+                if(duration >= 12) {
+                    for(i in 1..12) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 10
+                    }
+                } else {
+                    for(i in 1 .. duration) {
+                        Log.d(TAG, "Looped2")
+                        duration -= 1
+                        startTimeValue[0] = (startTimeValue[0].toInt() + 1).toString()
+                        reservationPayment += 10
+                    }
+                }
+            }
+//            if(startTimeValue[0] 4)
+//                4 to 959am
+//                        first 3 hours 55
+//            succeeding 30
+//
+//            10 to 359am
+//                    first 3 hours 55
+//            succeeding 10
+//
+//            weekends and holidays 60pesos whole day
+
+            Log.d(TAG, "startTimeValue" + startTimeValue)
+            Log.d(TAG, "startTimeTrueValue" + startTimeTrueValue)
+            Log.d(TAG, "endTimeValue" + endTimeValue)
+            Log.d(TAG, "endTimeTrueValue" + endTimeTrueValue)
+            Log.d(TAG, "reservationPayment" + reservationPayment)
             Log.d(TAG, "reserve location slot launcher =" + name + imageId + date + position + startTime + endTime + isOvernight)
         }
     }
