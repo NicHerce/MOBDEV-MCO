@@ -1,5 +1,6 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ import java.util.concurrent.Executors
 class LocationActivity: AppCompatActivity() {
     companion object {
         const val TAG: String = "Main Activity"
+        const val reservationPaymentKey: String = "RESERVATION_PAYMENT_KEY"
 //        private val details = ArrayList<ReservationModel>()
     }
 
@@ -46,6 +48,17 @@ class LocationActivity: AppCompatActivity() {
 //    private var location = ""
 //    private var date = ""
 //    private var time = ""
+
+//    private val paymentPageSlotLauncher = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+//        if (result.resultCode == RESULT_OK) {
+//            val time: Int = result.data?.getIntExtra(PaymentPageActivity.timeKey, 0)!!
+//            val imageId: Int = result.data?.getIntExtra(PaymentPageActivity.imageIdKey, 0)!!
+//            val position: Int = result.data?.getIntExtra(PaymentPageActivity.positionKey, 0)!!
+//            val isOverNight: Boolean = result.data?.getBooleanExtra(PaymentPageActivity.)
+//
+//        }
+//    }
 
     //Go to location adapter, pass result back
     private val reserveLocationSlotLauncher = registerForActivityResult(
@@ -159,6 +172,11 @@ class LocationActivity: AppCompatActivity() {
 //
 //            weekends and holidays 60pesos whole day
 
+            val intent: Intent = Intent(this@LocationActivity, PaymentPageActivity::class.java)
+
+            intent.putExtra(reservationPaymentKey, reservationPayment)
+
+            startActivity(intent)
             Log.d(TAG, "startTimeValue" + startTimeValue)
             Log.d(TAG, "startTimeTrueValue" + startTimeTrueValue)
             Log.d(TAG, "endTimeValue" + endTimeValue)
