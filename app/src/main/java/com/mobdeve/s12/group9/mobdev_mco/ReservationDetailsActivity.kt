@@ -3,6 +3,7 @@ package com.mobdeve.s12.group9.mobdev_mco
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,7 @@ class ReservationDetailsActivity : AppCompatActivity() {
 
     companion object {
         const val TAG         = "Reservation Details Activity"
+        const val reservationIDKey = "ID_KEY"
         const val statusKey   = "STATUS_KEY"
         const val locationKey = "LOCATION_KEY"
         const val dateKey     = "DATE_KEY"
@@ -37,7 +39,20 @@ class ReservationDetailsActivity : AppCompatActivity() {
         setContentView(viewActivityReservationDetailsBinding.root)
 
         // Generate a QR code with String data
-        generateQRCode("nigger")
+        generateQRCode(reservationIDKey)
+
+
+        viewActivityReservationDetailsBinding.ivMap.setImageResource(R.drawable.ayalamallmap)
+        viewActivityReservationDetailsBinding.tvReservationID.text = "ID# " + intent.getIntExtra(ReservationDetailsActivity.reservationIDKey, 0).toString()
+
+        viewActivityReservationDetailsBinding.ivMap.setOnClickListener {
+//            if(intent.getStringExtra().)
+            val url = "https://waze.com/ul/hwdw49hhbw"
+
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

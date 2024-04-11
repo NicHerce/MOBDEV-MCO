@@ -5,53 +5,50 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ReservationDetailsActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/Header"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="165dp">
-
-        <ImageView
-            android:id="@+id/ivHomeHeader"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/shadow_yellow_background" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvReservationId"
-            android:layout_width="wrap_content"
+            android:id="@+id/tvReservationID"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/yellow_background"
+            android:elevation="4dp"
+            android:gravity="center"
+            android:padding="10dp"
             android:text="ID: #000-000"
             android:textColor="@color/black"
-            android:textSize="50sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.306" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:textSize="50sp" />
 
-    <ImageView
-        android:id="@+id/ivQRCode"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:adjustViewBounds="true"
-        android:contentDescription="QR Code"
-        tools:srcCompat="@tools:sample/avatars" />
+        <ImageView
+            android:id="@+id/ivMap"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <ImageView
+            android:id="@+id/ivQRCode"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="QR Code"
+            tools:srcCompat="@tools:sample/avatars" />
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/navbar"

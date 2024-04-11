@@ -3,6 +3,7 @@ package com.mobdeve.s12.group9.mobdev_mco.Adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
@@ -30,23 +31,29 @@ class ReservationsAdapter(
             false
         )
 
-        val reservationViewHolder = ReservationViewHolder(itemViewBinding)
-
-        reservationViewHolder.itemView.setOnClickListener{
-            val intent = Intent(reservationViewHolder.itemView.context, ReservationDetailsActivity::class.java)
-
-//            intent.putExtra(ReserveLocationActivity.nameKey, itemViewBinding.tvLocationName.text.toString())
-//            intent.putExtra(ReserveLocationActivity.imageIdKey, itemViewBinding.ivLocationImg.id.toString())
-//            intent.putExtra(ReserveLocationActivity.positionKey, locationViewHolder.adapterPosition)
-
-            this.reservationDetailsLauncher.launch(intent)
-        }
+//        val reservationViewHolder = ReservationViewHolder(itemViewBinding)
+//
+//        reservationViewHolder.itemView.setOnClickListener{
+//            val intent = Intent(reservationViewHolder.itemView.context, ReservationDetailsActivity::class.java)
+//
+//            intent.putExtra(ReservationDetailsActivity.reservationIDKey, reservationViewHolder.adapterPosition)
+//
+//            this.reservationDetailsLauncher.launch(intent)
+//        }
 
         return ReservationViewHolder(itemViewBinding)
     }
 
     override fun onBindViewHolder(holder: ReservationViewHolder, position: Int) {
         holder.bindData(data[position])
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(holder.itemView.context, ReservationDetailsActivity::class.java)
+
+            intent.putExtra(ReservationDetailsActivity.reservationIDKey, holder.adapterPosition)
+
+            this.reservationDetailsLauncher.launch(intent)
+        }
     }
     override fun getItemCount(): Int {
         return data.size
