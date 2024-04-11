@@ -14,8 +14,8 @@ import com.mobdeve.s12.group9.mobdev_mco.databinding.LocationsLayoutBinding
 // Adapter is an Abstract class
 // Adapter requires 3 functions: onCreateViewHolder, onBindViewHolder, and getItemCount
 class LocationAdapter(
-    private val data: ArrayList<LocationModel>,
-    private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>
+        private val data: ArrayList<LocationModel>,
+        private val reserveLocationSlotLauncher: ActivityResultLauncher<Intent>
     ) : Adapter<LocationViewHolder>() {
     companion object {
         const val TAG: String = "My Adapter"
@@ -45,6 +45,7 @@ class LocationAdapter(
 
             this.reserveLocationSlotLauncher.launch(intent)
         }
+
         return locationViewHolder
     }
 

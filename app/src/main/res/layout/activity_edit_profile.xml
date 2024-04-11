@@ -90,7 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="355dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
@@ -102,7 +102,7 @@
         android:paddingBottom="5dp">
 
         <TableLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TableRow
@@ -114,7 +114,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Contact No."
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -122,7 +122,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="X9876543210"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/ivEditPhone"
@@ -144,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:text="Driver's License No."
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -152,7 +152,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="N00-00-000000"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/ivEditDriversLicense"
@@ -173,7 +173,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="License Plates"
-                    android:textSize="20sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -181,7 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="XYZ-123"
-                    android:textSize="20sp" />
+                    android:textSize="15sp" />
 
                 <ImageView
                     android:id="@+id/ivEditLicensePlate"

@@ -33,8 +33,8 @@ class LocationActivity : AppCompatActivity() {
     private lateinit var homeActivityBinding: ActivityHomeBinding
 
     //Reservation values
-    private var location = "";
-    private var date = "";
+    private var location = ""
+    private var date = ""
     private var time = ""
 
     //Go to location adapter, pass result back

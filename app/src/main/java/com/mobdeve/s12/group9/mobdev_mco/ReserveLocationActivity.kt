@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.CalendarView.OnDateChangeListener
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -37,10 +35,11 @@ class ReserveLocationActivity : AppCompatActivity() {
         ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         // Check to see if the result returned is appropriate (i.e. OK)
         Log.d(TAG, "reservation slot launcher")
+
         if (result.resultCode == RESULT_OK) {
-            startTime = result.data?.getStringExtra(ReservationActivity.startTimeKey)!!
-            endTime = result.data?.getStringExtra(ReservationActivity.endTimeKey)!!
-            isOvernight = result.data?.getBooleanExtra(ReservationActivity.isOvernightKey, false)!!
+            startTime = result.data?.getStringExtra(ReservationTimeActivity.startTimeKey)!!
+            endTime = result.data?.getStringExtra(ReservationTimeActivity.endTimeKey)!!
+            isOvernight = result.data?.getBooleanExtra(ReservationTimeActivity.isOvernightKey, false)!!
             Log.d(TAG, "start =" + startTime)
             Log.d(TAG, "end =" + endTime)
             intent.putExtra(startTimeKey, startTime)
@@ -82,7 +81,7 @@ class ReserveLocationActivity : AppCompatActivity() {
 //                ).show()
 //            })
 //            val intent: Intent = Intent()
-            val intent: Intent = Intent(this@ReserveLocationActivity, ReservationActivity::class.java)
+            val intent: Intent = Intent(this@ReserveLocationActivity, ReservationTimeActivity::class.java)
 
             intent.putExtra(
                 nameKey,

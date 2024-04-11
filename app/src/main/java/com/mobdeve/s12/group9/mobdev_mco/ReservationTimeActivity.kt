@@ -2,7 +2,6 @@ package com.mobdeve.s12.group9.mobdev_mco
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.PorterDuff
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.SpinnerAdapter
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReservationBinding
 
-class ReservationActivity : AppCompatActivity() {
+class ReservationTimeActivity : AppCompatActivity() {
     companion object {
         const val startTimeKey: String = "START_TIME_KEY"
         const val endTimeKey: String = "END_TIME_KEY"
@@ -58,7 +57,7 @@ class ReservationActivity : AppCompatActivity() {
             ) {
                 setStartTime();
                 Log.d("Reservation Activity", "test time" + tvSpinEntry?.text.toString())
-                intent.putExtra(ReservationActivity.startTimeKey, tvSpinEntry?.text.toString())
+                intent.putExtra(ReservationTimeActivity.startTimeKey, tvSpinEntry?.text.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
@@ -72,7 +71,7 @@ class ReservationActivity : AppCompatActivity() {
                 id: Long
             ) {
                 setEndTime();
-                intent.putExtra(ReservationActivity.endTimeKey, tvSpinEntry?.text.toString())
+                intent.putExtra(ReservationTimeActivity.endTimeKey, tvSpinEntry?.text.toString())
             }
 
             override fun onNothingSelected(parentView: AdapterView<*>?) {}
