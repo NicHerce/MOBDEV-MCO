@@ -31,7 +31,7 @@ class ReserveLocationActivity : AppCompatActivity() {
     private lateinit var bodyString: String
     private lateinit var startTime: String
     private lateinit var endTime: String
-    private lateinit var date: String
+    private var date = ""
     private var isOvernight = false;
 
     private lateinit var reserveLocationBinding: ActivityReserveLocationBinding   // Holds the views of the ActivityViewNoteBinding
