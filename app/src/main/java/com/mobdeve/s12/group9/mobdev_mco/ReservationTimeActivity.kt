@@ -10,7 +10,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.SpinnerAdapter
-import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReservationBinding
+import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReservationTimeBinding
 
 class ReservationTimeActivity : AppCompatActivity() {
     companion object {
@@ -19,7 +19,7 @@ class ReservationTimeActivity : AppCompatActivity() {
         const val isOvernightKey: String = "IS_OVERNIGHT_KEY"
     }
 
-    private lateinit var reservationBinding: ActivityReservationBinding
+    private lateinit var reservationBinding: ActivityReservationTimeBinding
     private val startTime: Spinner? = null
     private val endTime: Spinner? = null
     private var spinnerAdapter: SpinnerAdapter? = null
@@ -38,7 +38,7 @@ class ReservationTimeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        reservationBinding = ActivityReservationBinding.inflate(layoutInflater)
+        reservationBinding = ActivityReservationTimeBinding.inflate(layoutInflater)
         setContentView(reservationBinding.root)
 
         val arrayStructures = resources.getStringArray(R.array.array_time)

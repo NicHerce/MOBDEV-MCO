@@ -1,7 +1,22 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="Base.Theme.MOBDEV_MCO" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+    <style name="Base.Theme.MOBDEV_MCO" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!--changes the color of the status bar-->
+        <item name="android:statusBarColor">#F9BE28</item>
     </style>
+
+    <style name="Theme.MOBDEV_MCO" parent="Base.Theme.MOBDEV_MCO" />
+
+    <style name="Theme.MOBDEV_MCO.NoActionBar">
+        <item name="android:statusBarColor">#F9BE28</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MOBDEV_MCO.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.MOBDEV_MCO.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

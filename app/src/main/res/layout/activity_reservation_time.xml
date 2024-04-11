@@ -2,33 +2,57 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ReserveLocationActivity">
-
-    <!--    <CalendarView-->
-    <!--        android:id="@+id/calendar"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"></CalendarView>-->
+    tools:context=".ReservationTimeActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="334dp">
 
+        <Spinner
+            android:id="@+id/endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/container_background"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationImageTv"
+            app:layout_constraintVertical_bias="0.493" />
+
+        <Spinner
+            android:id="@+id/startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/container_background"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/endTime"
+            app:layout_constraintHorizontal_bias="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationImageTv"
+            app:layout_constraintVertical_bias="0.493" />
 
         <ImageView
             android:id="@+id/locationImageTv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:adjustViewBounds="true"
+            android:layout_height="200dp"
             android:scaleType="fitXY"
             android:src="@drawable/ayalamalls"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvLocationName"
@@ -40,45 +64,55 @@
             android:text="Location Name"
             android:textColor="@color/black"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/locationImageTv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.917" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintTop_toTopOf="@+id/locationImageTv"
+            app:layout_constraintVertical_bias="0.878" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <CalendarView
-            android:id="@+id/locationCalendarReservationCv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/reserveBtn"
+        <TextView
+            android:id="@+id/tvStartHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#E6AA14"
-            android:text="Reserve" />
-    </LinearLayout>
+            android:background="#FEFEFE"
+            android:text="Start"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/startTime"
+            app:layout_constraintEnd_toEndOf="@+id/startTime"
+            app:layout_constraintHorizontal_bias="0.176"
+            app:layout_constraintStart_toStartOf="@+id/startTime"
+            app:layout_constraintTop_toTopOf="@+id/startTime"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/tvEndHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FEFEFE"
+            android:text="End"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/endTime"
+            app:layout_constraintEnd_toEndOf="@+id/endTime"
+            app:layout_constraintHorizontal_bias="0.153"
+            app:layout_constraintStart_toStartOf="@+id/endTime"
+            app:layout_constraintTop_toTopOf="@+id/endTime"
+            app:layout_constraintVertical_bias="1.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/reservationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="#E6AA14"
+        android:text="Button" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="146dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1">
 
         <LinearLayout
