@@ -39,7 +39,7 @@ class ReservationDetailsActivity : AppCompatActivity() {
         setContentView(viewActivityReservationDetailsBinding.root)
 
         // Generate a QR code with String data
-        generateQRCode(reservationIDKey)
+        generateQRCode(intent.getIntExtra(ReservationDetailsActivity.reservationIDKey, 0).toString())
 
 
         viewActivityReservationDetailsBinding.ivMap.setImageResource(R.drawable.ayalamallmap)
