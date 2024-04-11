@@ -4,28 +4,26 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.database.sqlite.SQLiteException
-import android.provider.ContactsContract.Data
 import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
 
 class LocationDatabase(context: Context) {
     // A private instance of the DB helper
-    private lateinit var databaseHandler : DatabaseHandler
+    private lateinit var locationDatabaseHandler : LocationDatabaseHandler
 
     // Initializes the databaseHandler instance using the context provided.
     init {
-        this.databaseHandler = DatabaseHandler(context)
+        this.locationDatabaseHandler = LocationDatabaseHandler(context)
     }
 
     // Add a location and return id
     fun addLocation(location: LocationModel) : Int {
-        val db = databaseHandler.writableDatabase
+        val db = locationDatabaseHandler.writableDatabase
 
         val contentValues = ContentValues()
-        contentValues.put(DatabaseHandler.LOCATION_NAME, location.name)
-        contentValues.put(DatabaseHandler.LOCATION_IMAGE_ID, location.imageID)
+        contentValues.put(LocationDatabaseHandler.LOCATION_NAME, location.name)
+        contentValues.put(LocationDatabaseHandler.LOCATION_IMAGE_ID, location.imageID)
 
-        val id = db.insert(DatabaseHandler.LOCATION_TABLE, null, contentValues)
+        val id = db.insert(LocationDatabaseHandler.LOCATION_TABLE, null, contentValues)
 
         db.close()
 
@@ -34,11 +32,11 @@ class LocationDatabase(context: Context) {
 
     //Update a location
     fun updateLocation(location: LocationModel) {
-        val db = databaseHandler.writableDatabase
+        val db = locationDatabaseHandler.writableDatabase
 
         val contentValues = ContentValues()
-        contentValues.put(DatabaseHandler.LOCATION_NAME, location.name)
-        contentValues.put(DatabaseHandler.LOCATION_IMAGE_ID, location.imageID)
+        contentValues.put(LocationDatabaseHandler.LOCATION_NAME, location.name)
+        contentValues.put(LocationDatabaseHandler.LOCATION_IMAGE_ID, location.imageID)
 
 //        db.update(DatabaseHandler.LOCATION_TABLE, contentValues, DatabaseHandler.LOCATION_ID + " =?", arrayOf(media.title))
 
@@ -48,7 +46,7 @@ class LocationDatabase(context: Context) {
 
     //Delete a location
     fun deleteLocation(location: LocationModel) {
-        val db = databaseHandler.writableDatabase
+        val db = locationDatabaseHandler.writableDatabase
 
 //        db.delete(DatabaseHandler.LOCATION_TABLE, DatabaseHandler.LOCATION_ID + " =?", arrayOf(media.title))
 
@@ -57,10 +55,10 @@ class LocationDatabase(context: Context) {
 
     //Get location details
     fun getLocation(): ArrayList<LocationModel>{
-        val db: SQLiteDatabase = databaseHandler.writableDatabase
+        val db: SQLiteDatabase = locationDatabaseHandler.writableDatabase
 
         val c : Cursor = db.query(
-            DatabaseHandler.LOCATION_TABLE,
+            LocationDatabaseHandler.LOCATION_TABLE,
             null,
             null,
             null,
@@ -74,9 +72,9 @@ class LocationDatabase(context: Context) {
 
         while(c.moveToNext()) {
             result.add(LocationModel(
-                c.getInt(c.getColumnIndexOrThrow(DatabaseHandler.LOCATION_ID)),
-                c.getString(c.getColumnIndexOrThrow(DatabaseHandler.LOCATION_NAME)),
-                c.getInt(c.getColumnIndexOrThrow(DatabaseHandler.LOCATION_IMAGE_ID)),
+                c.getInt(c.getColumnIndexOrThrow(LocationDatabaseHandler.LOCATION_ID)),
+                c.getString(c.getColumnIndexOrThrow(LocationDatabaseHandler.LOCATION_NAME)),
+                c.getInt(c.getColumnIndexOrThrow(LocationDatabaseHandler.LOCATION_IMAGE_ID)),
             ))
         }
 

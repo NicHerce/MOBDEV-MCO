@@ -1,13 +1,12 @@
 package com.mobdeve.s12.group9.mobdev_mco.Database
 
-import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import com.mobdeve.s12.group9.mobdev_mco.Model.UserModel
 
-class DatabaseHandler (context: Context) :
+class LocationDatabaseHandler (context: Context) :
     SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION){
 
     // All constant variables needed for the database
@@ -20,12 +19,12 @@ class DatabaseHandler (context: Context) :
         const val LOCATION_NAME = "location_name"
         const val LOCATION_IMAGE_ID = "location_image_id"
 
-        private var instance: DatabaseHandler? = null
+        private var instance: LocationDatabaseHandler? = null
 
         @Synchronized
-        fun getInstance(context: Context): DatabaseHandler? {
+        fun getInstance(context: Context): LocationDatabaseHandler? {
             if (instance == null) {
-                instance = DatabaseHandler(context.applicationContext)
+                instance = LocationDatabaseHandler(context.applicationContext)
             }
             return instance
         }
