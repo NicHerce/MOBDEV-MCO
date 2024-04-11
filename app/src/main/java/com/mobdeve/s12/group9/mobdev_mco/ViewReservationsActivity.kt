@@ -27,7 +27,7 @@ class ViewReservationsActivity : AppCompatActivity() {
     // Generate the data for Reservations
     private val reservationModelList: ArrayList<ReservationModel> = ReservationGenerator.loadData()
 
-    lateinit var recyclerView: RecyclerView               // RecyclerView reference
+    lateinit var recyclerView: RecyclerView                       // RecyclerView reference
     private lateinit var reservationsAdapter: ReservationsAdapter // Adapter reference
     private val snapHelper: SnapHelper = LinearSnapHelper()       // SnapHelper reference
 
@@ -58,6 +58,9 @@ class ViewReservationsActivity : AppCompatActivity() {
         this.reservationsAdapter = ReservationsAdapter(reservationModelList, reservationDetailsLauncher)
         this.recyclerView.adapter = reservationsAdapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+        this.snapHelper.attachToRecyclerView(recyclerView)
+
+        // Set the SnapHelper.
         this.snapHelper.attachToRecyclerView(recyclerView)
 
         executorService.execute {
