@@ -28,7 +28,7 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         profileActivityBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ReservationsActivity::class.java)
+            val intent = Intent(this, ViewReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

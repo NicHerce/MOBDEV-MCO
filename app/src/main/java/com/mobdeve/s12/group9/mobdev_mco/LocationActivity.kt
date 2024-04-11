@@ -1,42 +1,51 @@
 package com.mobdeve.s12.group9.mobdev_mco
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.LocationAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Adapter.ReservationsAdapter
 import com.mobdeve.s12.group9.mobdev_mco.Database.ReservationDatabase
 import com.mobdeve.s12.group9.mobdev_mco.Model.LocationModel
 import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.LocationGenerator
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityHomeBinding
+import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityViewReservationsBinding
+import java.util.concurrent.Executors
 
-class LocationActivity : AppCompatActivity() {
+class LocationActivity: AppCompatActivity() {
     companion object {
         const val TAG: String = "Main Activity"
 //        private val details = ArrayList<ReservationModel>()
     }
 
+    private val executorService = Executors.newSingleThreadExecutor()
+
     // Generate the data for Locations
     private val locationModelList: ArrayList<LocationModel> = LocationGenerator.loadData()
 
+    private lateinit var reservationModel: ArrayList<ReservationModel>
     private lateinit var recyclerView: RecyclerView         // RecyclerView reference
     private lateinit var locationAdapter: LocationAdapter   // Adapter reference
+    private lateinit var reservationsAdapter: ReservationsAdapter
     private val snapHelper: SnapHelper = LinearSnapHelper() // SnapHelper reference
 
     // HomeActivityBinding reference
     private lateinit var homeActivityBinding: ActivityHomeBinding
+    private lateinit var viewReservationsActivityBinding: ActivityViewReservationsBinding
 
     //Reservation values
-    private var location = ""
+//    private var location = ""
 //    private var date = ""
-    private var time = ""
+//    private var time = ""
 
     //Go to location adapter, pass result back
     private val reserveLocationSlotLauncher = registerForActivityResult(
@@ -143,6 +152,8 @@ class LocationActivity : AppCompatActivity() {
                 )
             )
 
+            reservationsAdapter.notifyItemInserted(0)
+
             val database = reservationDatabase.getReservation()
             Log.d(TAG, "database = " + database)
 //
@@ -161,14 +172,29 @@ class LocationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Initialize ViewBinding for the HomeActivity
+
+        viewReservationsActivityBinding = ActivityViewReservationsBinding.inflate(layoutInflater)
+        setContentView(viewReservationsActivityBinding.root)
         homeActivityBinding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(homeActivityBinding.root)
+
+        executorService.execute {
+            val reservationDatabase = ReservationDatabase(applicationContext)
+            reservationModel = reservationDatabase.getReservation()
+
+            printReservationsToLog()
+
+            viewReservationsActivityBinding.reservationsRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
+            // Notice we're passing in the myActivityResultLauncher to the Adapter
+            reservationsAdapter = ReservationsAdapter(reservationModel, reserveLocationSlotLauncher)
+            viewReservationsActivityBinding.reservationsRecyclerView.adapter = reservationsAdapter
+        }
 
         // RecyclerView setup
         this.recyclerView = homeActivityBinding.locationsRecyclerView1
         this.locationAdapter = LocationAdapter(locationModelList, reserveLocationSlotLauncher)
         this.recyclerView.adapter = locationAdapter
-        recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        this.recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         this.snapHelper.attachToRecyclerView(recyclerView)
 
         homeActivityBinding.profileBtn.setOnClickListener {
@@ -178,9 +204,15 @@ class LocationActivity : AppCompatActivity() {
         }
 
         homeActivityBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ReservationsActivity::class.java)
+            val intent = Intent(this, ViewReservationsActivity::class.java)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private fun printReservationsToLog() {
+        for (reservation in reservationModel) {
+            Log.d(TAG, "printAllReservations: $reservation")
         }
     }
 }

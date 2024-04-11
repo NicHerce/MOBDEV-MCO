@@ -5,10 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.CalendarView
+import android.widget.CalendarView.OnDateChangeListener
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityReserveLocationBinding
+import java.util.Calendar
+import java.util.Date
 
 
 class ReserveLocationActivity : AppCompatActivity() {
@@ -74,6 +78,17 @@ class ReserveLocationActivity : AppCompatActivity() {
 //                0
 //            )
 //        )
+        reserveLocationBinding.locationCalendarReservationCv.setOnDateChangeListener { calView: CalendarView, year: Int, month: Int, dayOfMonth: Int ->
+            val calendar: Calendar = Calendar.getInstance()
+
+            calendar.set(year, month, dayOfMonth)
+
+            calView.setDate(calendar.timeInMillis, true, true)
+
+            date = "$dayOfMonth/${month + 1}/$year"
+            Log.d("SelectedDate", "$dayOfMonth/${month + 1}/$year")
+        }
+
         val position = intent.getIntExtra(ReserveLocationActivity.positionKey, 0)
         reserveLocationBinding.reserveBtn.setOnClickListener(View.OnClickListener {
 //            reserveLocationBinding.locationCalendarReservationCv.setOnDateChangeListener(OnDateChangeListener { arg0, year, month, date ->
@@ -94,8 +109,10 @@ class ReserveLocationActivity : AppCompatActivity() {
                 imageIdKey,
                 reserveLocationBinding.locationImageTv.id
             )
-            date = reserveLocationBinding.locationCalendarReservationCv.date.toString()
-            Log.d(TAG, "date check" + intent.getStringExtra(ReserveLocationActivity.dateKey))
+//            var dateString: Date = Date(reserveLocationBinding.locationCalendarReservationCv.date)
+//            date = dateString.toString()
+            Log.d(TAG, "date check" + date)
+//            Log.d(TAG, "date string" + dateString)
             intent.putExtra(positionKey, position)
 
             this.reservationSlotLauncher.launch(intent)
@@ -113,7 +130,7 @@ class ReserveLocationActivity : AppCompatActivity() {
         }
 
         reserveLocationBinding.viewReservationsBtn.setOnClickListener {
-            val intent = Intent(this, ReservationsActivity::class.java)
+            val intent = Intent(this, ViewReservationsActivity::class.java)
             startActivity(intent)
             finish()
         }

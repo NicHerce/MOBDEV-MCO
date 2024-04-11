@@ -25,7 +25,7 @@
             android:name=".ReserveLocationActivity"
             android:exported="false" />
         <activity
-            android:name=".ReservationsActivity"
+            android:name=".ViewReservationsActivity"
             android:exported="false" /> <!-- <activity -->
         <!-- android:name=".HomePageActivity" -->
         <!-- android:exported="false" -->

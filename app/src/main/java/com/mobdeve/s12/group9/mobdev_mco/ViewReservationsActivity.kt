@@ -11,26 +11,30 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.mobdeve.s12.group9.mobdev_mco.Adapter.ReservationsAdapter
+import com.mobdeve.s12.group9.mobdev_mco.Database.ReservationDatabase
 import com.mobdeve.s12.group9.mobdev_mco.Model.ReservationModel
 import com.mobdeve.s12.group9.mobdev_mco.ValuesGenerator.ReservationGenerator
 import com.mobdeve.s12.group9.mobdev_mco.databinding.ActivityViewReservationsBinding
+import java.util.concurrent.Executors
 
-class ReservationsActivity : AppCompatActivity() {
+class ViewReservationsActivity : AppCompatActivity() {
     companion object {
         const val TAG: String = "Reservations Activity"
     }
+    private val executorService = Executors.newSingleThreadExecutor()
 
+    private lateinit var reservationModel: ArrayList<ReservationModel>
     // Generate the data for Reservations
     private val reservationModelList: ArrayList<ReservationModel> = ReservationGenerator.loadData()
 
-    private lateinit var recyclerView: RecyclerView               // RecyclerView reference
+    lateinit var recyclerView: RecyclerView               // RecyclerView reference
     private lateinit var reservationsAdapter: ReservationsAdapter // Adapter reference
     private val snapHelper: SnapHelper = LinearSnapHelper()       // SnapHelper reference
 
     // Activity reference
     private lateinit var viewReservationsActivityBinding: ActivityViewReservationsBinding
 
-    private val reservationDetailsLauncher = registerForActivityResult(
+    val reservationDetailsLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
         Log.d(TAG, "reservation details launcher")
 
@@ -56,6 +60,18 @@ class ReservationsActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         this.snapHelper.attachToRecyclerView(recyclerView)
 
+        executorService.execute {
+            val reservationDatabase = ReservationDatabase(applicationContext)
+            reservationModel = reservationDatabase.getReservation()
+
+            printReservationsToLog()
+
+            viewReservationsActivityBinding.reservationsRecyclerView.layoutManager = LinearLayoutManager(applicationContext)
+            // Notice we're passing in the myActivityResultLauncher to the Adapter
+            reservationsAdapter = ReservationsAdapter(reservationModel, reservationDetailsLauncher)
+            viewReservationsActivityBinding.reservationsRecyclerView.adapter = reservationsAdapter
+        }
+
         viewReservationsActivityBinding.locationsBtn.setOnClickListener {
             val intent = Intent(this, LocationActivity::class.java)
             startActivity(intent)
@@ -66,6 +82,12 @@ class ReservationsActivity : AppCompatActivity() {
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
             finish()
+        }
+    }
+
+    private fun printReservationsToLog() {
+        for (reservation in reservationModel) {
+            Log.d(LocationActivity.TAG, "printAllReservations: $reservation")
         }
     }
 }
